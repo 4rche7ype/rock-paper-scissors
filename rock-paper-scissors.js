@@ -1,7 +1,10 @@
 console.log('hello');
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 10);
+    let randomNumber;
     let comsPick = " ";
 
     do {
@@ -17,4 +20,14 @@ function getComputerChoice() {
     }
 
     return (comsPick);
+}
+
+function getHumanChoice() {
+    let userInput;
+    do {
+        userInput = prompt('Rock, Paper, or Scissors?');
+        userInput = userInput.toLowerCase();
+    } while (userInput != "rock" && userInput != "paper" && userInput != "scissors");
+    
+    return (userInput);
 }
