@@ -10,7 +10,9 @@ function playGame() {
         playRound(humanSelection, computerSelection);
 
         console.log("you: " + humanScore + " computer: " + computerScore);
-
+        
+        //function playRound needs to be in this scope to access and modify
+        //the humanScore and computerScore variables within the playGame scope
         function playRound(humanChoice, computerChoice) {
             const human = humanChoice;
             const computer = computerChoice;
