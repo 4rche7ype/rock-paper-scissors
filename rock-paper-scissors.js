@@ -1,58 +1,69 @@
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-console.log("you: " + humanScore + " computer: " + computerScore);
-
-function playRound(humanChoice, computerChoice) {
-    const human = humanChoice;
-    const computer = computerChoice;
-
-    switch (human) {
-        case "rock":
-            if (computer === 'paper') {
-              console.log("Lost. Paper beats Rock.");
-              computerScore++; 
-            } else if (computer == 'scissors') {
-                console.log("Winner. Rock beats Scissors.");
-                humanScore++;
-            } else {
-                console.log("Draw. No points awarded.");
-            }
-            break;
-        case "paper":
-            if (computer == "rock") {
-                console.log("Winner. Paper beats Rock.");
-                humanScore++;
-            } else if (computer == "scissors") {
-                console.log("Lost. Scissors beats Paper.");
-                computerScore++;
-            } else {
-                console.log("Draw. No points awarded.");
-            }
-            break;
-        case "scissors":
-            if (computer == "rock") {
-                console.log("Lost. Rock beats Scissors.");
-                computerScore++;
-            } else if (computer == "paper") {
-                console.log("Winner. Scissors beat Paper.");
-                humanScore++;
-            } else {
-                console.log("Draw. No points awarded.");
-            }
-            break;
-    }
+    let humanScore = 0;
+    let computerScore = 0;
     
+    do {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+        console.log("you: " + humanScore + " computer: " + computerScore);
+
+        function playRound(humanChoice, computerChoice) {
+            const human = humanChoice;
+            const computer = computerChoice;
+
+            switch (human) {
+                case "rock":
+                    if (computer == 'paper') {
+                        console.log("Lost. Paper beats Rock.");
+                        computerScore++; 
+                    } else if (computer == 'scissors') {
+                        console.log("Winner. Rock beats Scissors.");
+                        humanScore++;
+                    } else {
+                        console.log("Draw. No points awarded.");
+                    }
+                    break;
+                case "paper":
+                    if (computer == "rock") {
+                        console.log("Winner. Paper beats Rock.");
+                        humanScore++;
+                    } else if (computer == "scissors") {
+                        console.log("Lost. Scissors beats Paper.");
+                        computerScore++;
+                    } else {
+                        console.log("Draw. No points awarded.");
+                    }
+                    break;
+                case "scissors":
+                    if (computer == "rock") {
+                        console.log("Lost. Rock beats Scissors.");
+                        computerScore++;
+                    } else if (computer == "paper") {
+                        console.log("Winner. Scissors beat Paper.");
+                        humanScore++;
+                    } else {
+                        console.log("Draw. No points awarded.");
+                    }
+                    break;
+            }
+    
+        }
+    } while (humanScore !=5 && computerScore !=5);
+
+    if (humanScore == 5) {
+        console.log("You Win.");
+    } else {
+        console.log("Computer Wins. You lose.")
+    }
 }
 
 function getComputerChoice() {
     let randomNumber;
-    let comsPick = " ";
+    let comsPick;
 
     do {
         randomNumber = Math.floor(Math.random() * 10);
