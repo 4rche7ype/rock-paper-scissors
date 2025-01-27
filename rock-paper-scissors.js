@@ -66,7 +66,9 @@ function playGame() {
 function getComputerChoice() {
     let randomNumber;
     let comsPick;
-
+    
+    //to keep odds at 1/3 each removed zero
+    //only 1 - 9 is a possible number
     do {
         randomNumber = Math.floor(Math.random() * 10);
     } while (randomNumber == 0);
