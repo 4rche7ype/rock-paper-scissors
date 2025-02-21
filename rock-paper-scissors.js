@@ -4,59 +4,69 @@ let computerScore = 0;
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+const results = document.querySelector("#results");
 
 rock.addEventListener("click", playRound);
 paper.addEventListener("click", playRound);
 scissors.addEventListener("click", playRound);
-
-console.log("you: " + playerScore + " computer: " + computerScore);
         
 function playRound(choice) {
     let player = choice.target.id;
     const computer = getComputerChoice();
+    let scores = document.createElement("p");
+    let roundResult = document.createElement("p");
+    
 
     switch (player) {
         case "rock":
             if (computer == 'paper') {
-                console.log("Lost. Paper beats Rock.");
+                roundResult.textContent = "Lost. Paper beats Rock.";
                 computerScore++; 
             } else if (computer == 'scissors') {
-                console.log("Winner. Rock beats Scissors.");
+                roundResult.textContent = "Winner. Rock beats Scissors.";
                 playerScore++;
             } else {
-                console.log("Draw. No points awarded.");
+                roundResult.textContent = "Draw. No points awarded.";
             }
                 break;
         case "paper":
             if (computer == "rock") {
-                console.log("Winner. Paper beats Rock.");
+                roundResult.textContent = "Winner. Paper beats Rock.";
                 playerScore++;
             } else if (computer == "scissors") {
-                console.log("Lost. Scissors beats Paper.");
+                roundResult.textContent = "Lost. Scissors beats Paper.";
                 computerScore++;
             } else {
-                console.log("Draw. No points awarded.");
+                roundResult.textContent = "Draw. No points awarded.";
             }
                 break;
         case "scissors":
             if (computer == "rock") {
-                console.log("Lost. Rock beats Scissors.");
+                roundResult.textContent = "Lost. Rock beats Scissors.";
                 computerScore++;
             } else if (computer == "paper") {
-                console.log("Winner. Scissors beat Paper.");
+                roundResult.textContent = "Winner. Scissors beat Paper.";
                 playerScore++;
             } else {
-                console.log("Draw. No points awarded.");
+                roundResult.textContent = "Draw. No points awarded.";
             }
                 break;
     }
     
     if (playerScore == 5) {
-        console.log("Max points reached. Player Wins!");
+        roundResult.textContent = "Max points reached. Player Wins! Player: " + playerScore + " Computer: " + computerScore;
+        playerScore = 0;
+        computerScore = 0;
     } else if (computerScore == 5) {
-        console.log("Max points reached. Computer Wins!");
+        roundResult.textContent = "Max points reached. Computer Wins! Player: " + playerScore + " Computer: " + computerScore;
+        playerScore = 0;
+        computerScore = 0;
     }
     
+    scores.textContent = "Player: " + playerScore + " Computer: " + computerScore;
+
+    results.appendChild(roundResult);
+    results.appendChild(scores);
 }
 
 function getComputerChoice() {
