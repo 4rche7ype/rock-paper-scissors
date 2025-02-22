@@ -16,6 +16,7 @@ function playRound(choice) {
     let scores = document.createElement("p");
     let roundResult = document.createElement("p");
     
+    results.textContent = "";
 
     switch (player) {
         case "rock":
@@ -54,11 +55,11 @@ function playRound(choice) {
     }
     
     if (playerScore == 5) {
-        roundResult.textContent = "Max points reached. Player Wins! Player: " + playerScore + " Computer: " + computerScore;
+        roundResult.textContent = "Max points reached. Player Wins! Final Scores - Player: " + playerScore + " Computer: " + computerScore;        
         playerScore = 0;
         computerScore = 0;
     } else if (computerScore == 5) {
-        roundResult.textContent = "Max points reached. Computer Wins! Player: " + playerScore + " Computer: " + computerScore;
+        roundResult.textContent = "Max points reached. Computer Wins! Final Scores - Player: " + playerScore + " Computer: " + computerScore;     
         playerScore = 0;
         computerScore = 0;
     }
